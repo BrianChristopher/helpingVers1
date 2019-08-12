@@ -34,6 +34,7 @@ router.post("/", async (req, res) => {
   if (req.body.name) newMenuItemObject.name = req.body.name;
   if (req.body.category) newMenuItemObject.category = req.body.category;
   if (req.body.ingredients) newMenuItemObject.ingredients = req.body.ingredients;
+  if (req.body.user) newMenuItemObject.user = req.body.user;
 
   let menuItem = new MenuItem(newMenuItemObject);
 
@@ -53,6 +54,7 @@ router.put("/:id", async (req, res) => {
   if (req.body.name) updateMenuItemObject.name = req.body.name;
   if (req.body.category) updateMenuItemObject.category = req.body.category;
   if (req.body.ingredients) updateMenuItemObject.ingredients = req.body.ingredients;
+  if (req.body.user) updateMenuItemObject.user = req.body.user;
 
   //Update the menuItem in the database with the data in updateMenuItemObject
   const menuItem = await MenuItem.findByIdAndUpdate(req.params.id, updateMenuItemObject, {

@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Joi = require("joi");
 
-const ingredientSchema = new mongoose.Schema({
+const categorySchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -10,10 +10,10 @@ const ingredientSchema = new mongoose.Schema({
   }
 });
 
-const Ingredient = mongoose.model("Ingredient", ingredientSchema);
+const Category = mongoose.model("Category", categorySchema);
 
 //Joi validation function
-function validateIngredient(ingredient) {
+function validateCategory(category) {
   const schema = {
     name: Joi.string()
       .min(1)
@@ -21,8 +21,8 @@ function validateIngredient(ingredient) {
       .required()
   };
 
-  return Joi.validate(ingredient, schema);
+  return Joi.validate(category, schema);
 }
 
-exports.Ingredient = Ingredient;
-exports.validateIngredient = validateIngredient;
+exports.Category = Category;
+exports.validateCategory = validateCategory;

@@ -9,14 +9,13 @@ const menuItemSchema = new mongoose.Schema({
     maxlength: 50
   },
   category: {
-    type: String,
-    minlength: 1,
-    maxlength: 50
+    type: Array
   },
   ingredients: {
-    type: Array,
-    minlength: 1,
-    maxlength: 50
+    type: Array
+  },
+  user: {
+    type: String
   }
 });
 
@@ -29,29 +28,23 @@ function validateNewItem(menuItem) {
       .min(1)
       .max(50)
       .required(),
-    category: Joi.string()
-      .min(1)
-      .max(50),
-    ingredients: Joi.array()
-    //   .min(1)
-    //   .max(50)
+    category: Joi.array(),
+    ingredients: Joi.array(),
+    user: Joi.string()
   };
 
   return Joi.validate(menuItem, schema);
 }
 
 function validateUpdateFields(menuItem) {
-    const schema = {
-        name: Joi.string()
-          .min(1)
-          .max(50),
-        category: Joi.string()
-          .min(1)
-          .max(50),
-        ingredients: Joi.array()
-          .min(1)
-          .max(50)
-      };
+  const schema = {
+    name: Joi.string()
+      .min(1)
+      .max(50),
+    category: Joi.array(),
+    ingredients: Joi.array(),
+    user: Joi.string()
+  };
 
   return Joi.validate(menuItem, schema);
 }
