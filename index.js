@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const users = require("./routes/users");
+const auth = require("./routes/auth");
 const menuItems = require("./routes/menuItems");
 const ingredients = require("./routes/ingredients");
 const categories = require("./routes/categories");
@@ -21,7 +22,8 @@ app.get("/", (req, res) => {
 });
 
 //ROUTES
-app.use("/api/users/", users);
+app.use("/api/users", users);
+app.use("/api/auth", auth);
 app.use("/api/menuItems", menuItems);
 app.use("/api/ingredients", ingredients);
 app.use("/api/categories", categories);
