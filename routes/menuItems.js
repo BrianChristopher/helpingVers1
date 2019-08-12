@@ -60,7 +60,7 @@ router.put("/:id", async (req, res) => {
   });
 
   if (!menuItem)
-    return res.status(404).send("A user with the given ID was not found.");
+    return res.status(404).send("A menu item with the given ID was not found.");
 
   res.send(menuItem);
 });
