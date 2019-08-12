@@ -5,18 +5,21 @@ const userSchema = new mongoose.Schema({
   username: {
     type: String,
     required: true,
+    trim: true,
     minlength: 5,
     maxlength: 50
   },
   password: {
     type: String,
     required: true,
+    trim: true,
     minlength: 5,
     maxlength: 50
   },
   name: {
     type: String,
     required: true,
+    trim: true,
     minlength: 5,
     maxlength: 50
   }
