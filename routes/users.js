@@ -1,7 +1,29 @@
+const _ = require("lodash");
+const bcrypt = require("bcrypt");
 const mongoose = require("mongoose");
 const express = require("express");
 const router = express.Router();
-const { User, validateAllFields, validateSomeFields } = require("../models/user");
+const {
+  User,
+  validateAllFields,
+  validateSomeFields
+} = require("../models/user");
+
+//CREATE
+router.post("/", async (req, res) => {
+  const result = validateAllFields(req.body);
+  if (result.error)
+    return res.status(400).send(result.error.details[0].message);
+
+  let user = await User.findOne({ username: req.body.username });
+  if (user) return res.status(400).send("User already registered.");
+
+  user = new User(_.pick(req.body, ["username", "password", "name"]));
+  const salt = await bcrypt.genSalt(10);
+  user.password= await bcrypt.hash(user.password, salt);
+  await user.save();
+  res.send(_.pick(user, ["name", "username"]));
+});
 
 //READ / GET ALL
 router.get("/", async (req, res) => {
@@ -15,30 +37,6 @@ router.get("/:id", async (req, res) => {
   if (!user)
     return res.status(404).send("A user with the given ID was not found.");
 
-  res.send(user);
-});
-
-//CREATE
-router.post("/", async (req, res) => {
-  //TO DO--TO DO--TO DO
-  //First check to make sure user doesn't already exist.
-  // let user = users.find(u => u.username === req.body.username);
-  // if (user)
-  //   return res.status(400).send("A user with that email already exists");
-
-  //Then add user.
-  const result = validateAllFields(req.body);
-
-  if (result.error)
-    return res.status(400).send(result.error.details[0].message);
-
-  let user = new User({
-    username: req.body.username,
-    password: req.body.password,
-    name: req.body.name
-  });
-
-  user = await user.save();
   res.send(user);
 });
 
