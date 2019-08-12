@@ -1,0 +1,29 @@
+This is data that was used to mimic a database before a db was attached.
+
+
+const users = [
+  {
+    _id: 1,
+    username: "cookie@sesamestreet.usa",
+    password: "cis4cookie",
+    name: "Cookie Monster"
+  },
+  {
+    _id: 2,
+    username: "sailorman@navy.us",
+    password: "strong2thefinish",
+    name: "Popeye the Sailor Man"
+  },
+  {
+    _id: 3,
+    username: "blanche@goldengirls.com",
+    password: "bigdaddyheartsme",
+    name: "Blanche Deveraux"
+  },
+  {
+    _id: 4,
+    username: "harry@hogwarts.edu",
+    password: "theBoyWhoLived",
+    name: "Harry Potter"
+  }
+];
