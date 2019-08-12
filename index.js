@@ -1,12 +1,19 @@
-const mongoose = require("mongoose");
 const users = require("./routes/users");
 const auth = require("./routes/auth");
 const menuItems = require("./routes/menuItems");
 const ingredients = require("./routes/ingredients");
 const categories = require("./routes/categories");
+const mongoose = require("mongoose");
+const config = require("config");
 const express = require("express");
 const app = express();
 app.use(express.json());
+
+//Confirm that environmental variable is set for private keys
+if (!config.get('jwtPrivateKey')){
+  console.log("FATAL ERROR: jwtPrivateKey is not defined.");
+  process.exit(1);
+}
 
 //Connects to mongoDB
 mongoose
