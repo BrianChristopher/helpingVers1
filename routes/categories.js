@@ -1,16 +1,17 @@
+const auth = require('../middleware/auth');
 const mongoose = require("mongoose");
 const express = require("express");
 const router = express.Router();
 const { Category, validateCategory } = require("../models/category");
 
 //READ / GET ALL
-router.get("/", async (req, res) => {
+router.get("/", auth, async (req, res) => {
   const categories = await Category.find().sort("name");
   res.send(categories);
 });
 
 //READ / GET ONE
-router.get("/:id", async (req, res) => {
+router.get("/:id", auth, async (req, res) => {
   const category = await Category.findById(req.params.id);
   if (!category)
     return res.status(404).send("A category with the given ID was not found.");
@@ -19,7 +20,7 @@ router.get("/:id", async (req, res) => {
 });
 
 //CREATE
-router.post("/", async (req, res) => {
+router.post("/", auth, async (req, res) => {
   const result = validateCategory(req.body);
 
   if (result.error)
@@ -32,7 +33,7 @@ router.post("/", async (req, res) => {
 });
 
 //UPDATE
-router.put("/:id", async (req, res) => {
+router.put("/:id", auth, async (req, res) => {
   const result = validateCategory(req.body);
 
   if (result.error)
@@ -52,7 +53,7 @@ router.put("/:id", async (req, res) => {
 });
 
 //DELETE
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", auth, async (req, res) => {
   const category = await Category.findByIdAndRemove(req.params.id);
   if (!category)
     return res.status(404).send("A category with the given ID was not found.");

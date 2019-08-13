@@ -1,3 +1,4 @@
+const auth = require('../middleware/auth');
 const mongoose = require("mongoose");
 const express = require("express");
 const router = express.Router();
@@ -8,13 +9,13 @@ const {
 } = require("../models/menuItem");
 
 //READ / GET ALL
-router.get("/", async (req, res) => {
+router.get("/", auth, async (req, res) => {
   const menuItems = await MenuItem.find().sort("name");
   res.send(menuItems);
 });
 
 //READ / GET ONE
-router.get("/:id", async (req, res) => {
+router.get("/:id", auth, async (req, res) => {
   const menuItem = await MenuItem.findById(req.params.id);
   if (!menuItem)
     return res.status(404).send("A menu item with the given ID was not found.");
@@ -23,7 +24,7 @@ router.get("/:id", async (req, res) => {
 });
 
 //CREATE
-router.post("/", async (req, res) => {
+router.post("/", auth, async (req, res) => {
   const result = validateNewItem(req.body);
 
   if (result.error)
@@ -43,7 +44,7 @@ router.post("/", async (req, res) => {
 });
 
 //UPDATE
-router.put("/:id", async (req, res) => {
+router.put("/:id", auth, async (req, res) => {
   const result = validateUpdateFields(req.body);
 
   if (result.error)
@@ -68,7 +69,7 @@ router.put("/:id", async (req, res) => {
 });
 
 //DELETE
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", auth, async (req, res) => {
   const menuItem = await MenuItem.findByIdAndRemove(req.params.id);
   if (!menuItem)
     return res.status(404).send("A menu item with the given ID was not found.");
