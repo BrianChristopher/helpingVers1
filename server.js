@@ -8,6 +8,15 @@ const config = require("config");
 const express = require("express");
 const app = express();
 app.use(express.json());
+//This is what I added from MERN boilerplate
+const path = require("path");
+const PORT = process.env.PORT || 3001;
+
+// Serve up static assets (usually on heroku)
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
+
 
 //Confirm that environmental variable is set for private keys
 if (!config.get('jwtPrivateKey')){
@@ -24,16 +33,23 @@ mongoose
 mongoose.set("useFindAndModify", false);
 
 //This makes sure that the server is actually running.
-app.get("/", (req, res) => {
-  res.send("Hello, mundo!");
-});
+// app.get("/", (req, res) => {
+//   res.send("Hello, mundo!");
+// });
 
-//ROUTES
+//API ROUTES
 app.use("/api/users", users);
 app.use("/api/auth", auth);
 app.use("/api/menuItems", menuItems);
 app.use("/api/ingredients", ingredients);
 app.use("/api/categories", categories);
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Listening on port ${PORT}...`));
+
+// Send every other request to the React app
+// Define any API routes before this runs
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
+
+
+app.listen(PORT, () => console.log(`API server Listening on port ${PORT}...`));
