@@ -1,5 +1,29 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  
+}
+
+.mealCardBody {
+  margin: 0;
+  padding: 0;
+  height: 75px;
+}
+
+.mealCard {
+  margin: 0;
+  width: auto;
+}
+
+.mainContent {
+  margin: 50px 0 0 0;
+}
+
+.mealPlannerContainer {
+  margin: 5px;
+  padding: 5px;
+}
+
+.mealCardHeader{
+  padding: 5px 0 0 10px;
 }

@@ -5,6 +5,7 @@ import Home from "./components/home";
 import NavBar from "./components/common/navBar";
 import Login from './components/login';
 import Register from './components/register';
+import Planner from './components/planner';
 import "./App.css";
 
 
@@ -14,11 +15,12 @@ class App extends Component {
     return (
       <React.Fragment>
         <NavBar />
-        <main className="container">
+        <main className="container-fluid">
           <Switch>
             <Route path="/home" component={Home} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
+            <Route path="/planner" component={Planner} />
             {/* <Route path="/not-found" component={NotFound} /> */}
             <Redirect from="/" exact to="/home" />
             <Redirect to="/not-found" />
