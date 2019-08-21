@@ -1,4 +1,4 @@
-const userMeals = [
+const userMenuItems = [
     {
         _id: 1,
         userId: 42,
@@ -30,8 +30,12 @@ const userMeals = [
     {
         _id: 5,
         userId: 42,
-        name: "Overnight Blueberry Oatmeal",
+        name: "Overnight Berry Oats",
         categories: ["entree", "Breakfast"],
         ingredients: ["Oatmeal", "Milk", "Chia Seeds", "Blueberries", "Almond Extract"]
     }
 ]
+
+export function getUserMenuItems(){
+    return userMenuItems;
+}

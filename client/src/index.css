@@ -27,3 +27,22 @@ body {
 .mealCardHeader{
   padding: 5px 0 0 10px;
 }
+
+.menuItemsContainer {
+  margin: 5px;
+  padding: 5px;
+}
+
+.menuItemsCard {
+  margin: 0;
+  width: 100%;
+  padding: 0;
+  height: 292px;
+  overflow: auto;
+}
+.menuItemPill {
+  margin: 3px 0 0 3px;
+  width: auto;
+  padding: 3px;
+  overflow: hidden;
+}

@@ -3,7 +3,7 @@ import MealPlannerCard from "./mealPlannerCard";
 
 class menuGrid extends Component {
   render() {
-    const { weekDetails, mealDetails } = this.props;
+    const { weekDetails, mealDetails, userPlannedItems} = this.props;
 
     return (
       <div className="mealPlannerContainer">
@@ -12,7 +12,7 @@ class menuGrid extends Component {
             <div className="col p-0 m-0" key={day}>
               <h5 value={day}>{day}</h5>
               {mealDetails.map(meal => (
-                <MealPlannerCard key={meal} meal={meal} day={day} />
+                <MealPlannerCard key={meal} meal={meal} day={day} userPlannedItems={userPlannedItems} />
               ))}
             </div>
           ))}
