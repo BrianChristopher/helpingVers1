@@ -5,14 +5,14 @@ class MealPlannerCard extends Component {
   render() {
     const cardId = this.props.day + this.props.meal;
     const userPlannedItems = this.props.userPlannedItems;
-    console.log(userPlannedItems);
+    const handleDragStart = this.props.handleDragStart;
+    //console.log(userPlannedItems);
     const mealItems = [];
-    userPlannedItems.forEach(checkMealLocation)
+    userPlannedItems.forEach(checkMealLocation);
 
     function checkMealLocation(meal) {
-      if (meal.location === cardId) mealItems.push(meal)
+      if (meal.location === cardId) mealItems.push(meal);
     }
-
 
     return (
       <div className="card mealCard" key={this.props.meal}>
@@ -22,10 +22,17 @@ class MealPlannerCard extends Component {
         <div
           className="card-body mealCardBody"
           id={cardId}
-          // onDrop="drop(event)"
-          onDragOver={(e)=> e.preventDefault()}
-          onDrop={(e)=>this.props.handleDrop(e, cardId)}
-        >{mealItems.map(item => <MealPill key={item.id} item={item} />)}</div>
+          onDragOver={e => e.preventDefault()}
+          onDrop={e => this.props.handleDrop(e, cardId)}
+        >
+          {mealItems.map(item => (
+            <MealPill
+              key={item._id}
+              item={item}
+              handleDragStart={handleDragStart}
+            />
+          ))}
+        </div>
       </div>
     );
   }

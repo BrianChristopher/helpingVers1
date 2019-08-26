@@ -10,7 +10,7 @@ class MealPill extends Component {
         name={name}
         location={location}
         draggable
-        onDragStart={e => this.props.handleDragStart(e, id)}
+        onDragStart={e => this.props.handleDragStart(e, this.props.item._id)}
       >
         <Badge className="menuItemPill" pill variant="primary">
           {name}

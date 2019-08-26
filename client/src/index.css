@@ -6,8 +6,9 @@ body {
 
 .mealCardBody {
   margin: 0;
-  padding: 0;
-  height: 75px;
+  padding: 2px;
+  height: 90px;
+  overflow: auto;
 }
 
 .mealCard {
@@ -37,11 +38,11 @@ body {
   margin: 0;
   width: 100%;
   padding: 0;
-  height: 292px;
+  height: 337px;
   overflow: auto;
 }
 .menuItemPill {
-  margin: 3px 0 0 3px;
+  margin: 1px 0 0 0;
   width: auto;
   padding: 3px;
   overflow: hidden;

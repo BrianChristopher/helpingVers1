@@ -6,6 +6,7 @@ import MealPill from "./mealPill";
 class MenuItems extends Component {
   render() {
     const userMenuItems = this.props.userMenuItems;
+    const handleDragStart =this.props.handleDragStart;
 
     return (
       <div className="menuItemsContainer">
@@ -28,8 +29,8 @@ class MenuItems extends Component {
         </Dropdown>
         <Card className="menuItemsCard">
           <Card.Body className="menuItemsCard">
-            <div>Pills go here.</div>
-          {userMenuItems.map(item => <MealPill key={item.id} item={item} /> )}
+            {/* <div>Pills go here.</div> */}
+          {userMenuItems.map(item => <MealPill key={item._id} item={item} handleDragStart={handleDragStart} /> )}
           </Card.Body>
         </Card>
       </div>
