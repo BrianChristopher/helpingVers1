@@ -48,7 +48,7 @@ class Planner extends Component {
       );
       //console.log(index);
       //Make a copy of the array
-      const arrayCopy = this.state.userPlannedItems;
+      const arrayCopy = [...this.state.userPlannedItems];
       //Change the location of the item
       arrayCopy[index].location = cardId;
       //console.log(arrayCopy);
