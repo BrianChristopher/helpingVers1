@@ -6,8 +6,17 @@ const categories = require("./routes/categories");
 const mongoose = require("mongoose");
 const config = require("config");
 const express = require("express");
+const cors = require("cors");
 const app = express();
 app.use(express.json());
+
+//This is CORS middleware (for development only?)
+app.use(cors())
+app.options('*', cors())
+app.get('/products/:id', function (req, res, next) {
+  res.json({msg: 'This is CORS-enabled for all origins!'})
+})
+
 //This is what I added from MERN boilerplate
 const path = require("path");
 const PORT = process.env.PORT || 3001;

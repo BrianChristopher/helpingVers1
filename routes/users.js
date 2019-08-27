@@ -1,4 +1,4 @@
-const auth = require('../middleware/auth');
+const auth = require("../middleware/auth");
 const _ = require("lodash");
 const bcrypt = require("bcrypt");
 const mongoose = require("mongoose");
@@ -21,11 +21,14 @@ router.post("/", async (req, res) => {
 
   user = new User(_.pick(req.body, ["username", "password", "name"]));
   const salt = await bcrypt.genSalt(10);
-  user.password= await bcrypt.hash(user.password, salt);
+  user.password = await bcrypt.hash(user.password, salt);
   await user.save();
 
   const token = user.generateAuthToken();
-  res.header('x-auth-token', token).send(_.pick(user, ["name", "username"]));
+  res
+    .header("x-auth-token", token)
+    .header("access-control-expose-headers", "x-auth-token")
+    .send(_.pick(user, ["name", "username"]));
 });
 
 //READ / GET ALL

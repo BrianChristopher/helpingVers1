@@ -1,18 +1,15 @@
 import React from "react";
 
 const FormInput = props => {
-  const { id, label, placeholder, value, onChange, type, error } = props;
+  const { id, label, error, ...rest } = props;
   return (
     <div className="form-group">
       <label htmlFor={id}>{label}</label>
       <input
-        value={value}
-        onChange={onChange}
+        {...rest}
         name={id}
         id={id}
-        type={type}
         className="form-control"
-        placeholder={placeholder}
       />
       {error && <div className="alert alert-danger">{error}</div>}
     </div>

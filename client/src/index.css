@@ -37,7 +37,7 @@ body {
 .menuItemsCard {
   margin: 0;
   width: 100%;
-  padding: 0;
+  padding: 5px;
   height: 337px;
   overflow: auto;
 }
