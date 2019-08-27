@@ -2,7 +2,9 @@ import React from 'react';
 
 const Home = () => {
     return (
-        <h1>Home Page Here</h1>
+      <div className="container-fluid mainContent">
+      <h1>Home Page Here</h1>
+  </div>
       );
 }
  

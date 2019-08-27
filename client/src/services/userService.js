@@ -11,3 +11,6 @@ export function registerUser(user) {
     });
 }
 
+export default {
+    registerUser
+}

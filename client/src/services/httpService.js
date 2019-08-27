@@ -1,22 +1,28 @@
 import axios from "axios";
 
 axios.interceptors.response.use(null, error => {
-    const expectedError = 
+  const expectedError =
     error.response &&
     error.response.status >= 400 &&
     error.response.status < 500;
 
-    if (!expectedError) {
-        console.log("Logging the error", error);
-        alert("An unexpected error occurred.")
-    }
+  if (!expectedError) {
+    console.log("Logging the error", error);
+    alert("An unexpected error occurred.");
+  }
 
-    return Promise.reject(error);
-})
+  return Promise.reject(error);
+});
+
+function setJWT(jwt) {
+  axios.defaults.headers.common["x-auth-token"] = jwt;
+  console.log("JWT: ", jwt);
+}
 
 export default {
-    get: axios.get,
-    post: axios.post,
-    put: axios.put,
-    delete: axios.delete
+  get: axios.get,
+  post: axios.post,
+  put: axios.put,
+  delete: axios.delete,
+  setJWT
 };

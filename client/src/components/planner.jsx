@@ -2,9 +2,11 @@ import React, { Component } from "react";
 import { getWeekDetails } from "./../services/weekDetails";
 import { getMealDetails } from "./../services/mealDetails";
 import { getUserMenuItems } from "../services/userMenuItems";
+import {getMenuItems} from "../services/menuItemService";
 import MenuGrid from "./common/menuGrid";
 import MenuItems from "./common/menuItems";
 import { getPlannedItems } from "../services/userPlannedItems";
+import { getCurrentUser } from './../services/authService';
 
 class Planner extends Component {
   state = {
@@ -14,13 +16,22 @@ class Planner extends Component {
     userPlannedItems: []
   };
 
-  componentDidMount() {
+  async componentDidMount() {
+    const {data : dbMenuItems} = await getMenuItems();
+    console.log(dbMenuItems);
+    const userID = getCurrentUser()._id;
+    console.log("Current User ID: ", userID);
+    const filteredMenu = dbMenuItems.filter(function(item){return item.user === userID});
+    console.log(filteredMenu);
+    
     this.setState({
       weekDetails: getWeekDetails(),
       mealDetails: getMealDetails(),
-      userMenuItems: getUserMenuItems(),
+      userMenuItems: filteredMenu,
       userPlannedItems: getPlannedItems()
     });
+    
+
   }
 
   handleDragStart(e, itemInfo) {
