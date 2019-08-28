@@ -36,7 +36,7 @@ class NewMenuItem extends Form {
 
     try {
       menuItemService.createNewMenuItem(this.state.data, this.state.user._id);
-      window.location = "/planner";
+      window.location = "/menuItem/new";
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };

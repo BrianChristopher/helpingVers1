@@ -24,7 +24,7 @@ class App extends Component {
         <NavBar user={this.state.user}/>
         <main className="container-fluid">
           <Switch>
-            <Route path="/home" component={Home} />
+            <Route path="/home" component={Home} user={this.state.user} />
             <Route path="/login" component={Login} />
             <Route path="/logout" component={Logout} />
             <Route path="/register" component={Register} />

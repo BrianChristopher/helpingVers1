@@ -1,6 +1,6 @@
 import http from "./httpService";
 import { apiURL } from "../config.json";
-import { getCurrentUser } from "./authService";
+//import { getCurrentUser } from "./authService";
 
 const apiEndpoint = apiURL + "/menuItems";
 

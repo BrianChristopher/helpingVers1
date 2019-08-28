@@ -28,7 +28,8 @@ class Planner extends Component {
       weekDetails: getWeekDetails(),
       mealDetails: getMealDetails(),
       userMenuItems: filteredMenu,
-      userPlannedItems: getPlannedItems()
+      userPlannedItems: []
+      //getPlannedItems()
     });
     
 
