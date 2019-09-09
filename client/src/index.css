@@ -1,7 +1,6 @@
 body {
   margin: 0;
   padding: 0;
-  
 }
 
 .mealCardBody {
@@ -25,7 +24,7 @@ body {
   padding: 5px;
 }
 
-.mealCardHeader{
+.mealCardHeader {
   padding: 5px 0 0 10px;
 }
 
@@ -44,6 +43,13 @@ body {
 .menuItemPill {
   margin: 1px 0 0 0;
   width: auto;
+  padding: 3px;
+  overflow: hidden;
+}
+
+.menuItemButton {
+  margin: 1px 0 0 0;
+  width: 100%;
   padding: 3px;
   overflow: hidden;
 }
