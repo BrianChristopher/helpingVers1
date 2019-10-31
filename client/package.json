@@ -10,6 +10,7 @@
     "font-awesome": "^4.7.0",
     "joi-browser": "^13.4.0",
     "jwt-decode": "^2.2.0",
+    "material-design-icons": "^3.0.1",
     "react": "^16.6.3",
     "react-bootstrap": "^1.0.0-beta.11",
     "react-dom": "^16.6.3",

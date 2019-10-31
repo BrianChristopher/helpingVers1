@@ -12,6 +12,7 @@ const Home = () => {
         <div className="row">
           <div className="col col-5">
             <h1>Welcome to Helping</h1>
+            
             {user && (
               <React.Fragment>
                 <Button style={{"marginTop":"150px"}}className="btn btn-info btn-block" href="/planner">

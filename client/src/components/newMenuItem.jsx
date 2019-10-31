@@ -53,6 +53,8 @@ class NewMenuItem extends Form {
         <div className="container">
           <form onSubmit={this.handleSubmit}>
             {this.renderInputField("name", "Menu Item Name", "New Menu Item")}
+            
+            {/* These input fields can be added later. They are placeholders and do not work yet.
             {this.renderInputField(
               "category",
               "Category",
@@ -62,7 +64,8 @@ class NewMenuItem extends Form {
               "ingredients",
               "Ingredients",
               "Ingredients  --  Please don't type here yet, things will break."
-            )}
+            )} */}
+            
             {this.renderButton("Create New Menu Item")}
           </form>
         </div>
